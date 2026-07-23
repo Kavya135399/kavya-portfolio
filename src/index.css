@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #050505;
+    --bg-card: rgba(10, 10, 15, 0.7);
+    --border-glow: rgba(255, 255, 255, 0.1);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    background-color: #050505;
+    color: #f8fafc;
+  }
+
+  body {
+    background-color: #050505;
+    color: #f8fafc;
+    overflow-x: hidden;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #06b6d4 0%, #8b5cf6 50%, #d946ef 100%);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #38bdf8 0%, #a855f7 100%);
+  }
+
+  /* Fix browser autofill background */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus, 
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-box-shadow: 0 0 0px 1000px #0c0c12 inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+/* Aurora & Gradient Mesh */
+.aurora-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aurora-blob {
+  position: absolute;
+  filter: blur(100px);
+  opacity: 0.35;
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite alternate;
+}
+
+.aurora-1 {
+  top: -10%;
+  left: 20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(139,92,246,0.5) 0%, rgba(6,182,212,0.2) 70%, transparent 100%);
+}
+
+.aurora-2 {
+  bottom: 10%;
+  right: 15%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(217,70,239,0.4) 0%, rgba(59,130,246,0.2) 70%, transparent 100%);
+  animation-delay: -3s;
+}
+
+.aurora-3 {
+  top: 40%;
+  left: 50%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(6,182,212,0.4) 0%, rgba(139,92,246,0.2) 70%, transparent 100%);
+  animation-delay: -5s;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: rgba(12, 12, 18, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2), 0 0 20px rgba(6, 182, 212, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Neumorphic subtle elevation */
+.neu-button {
+  background: linear-gradient(145deg, #0e0e15, #060609);
+  box-shadow: 4px 4px 10px #020204, -4px -4px 10px #0e0e15;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.neu-button:hover {
+  background: linear-gradient(145deg, #12121c, #09090e);
+  box-shadow: 6px 6px 14px #020204, -6px -6px 14px #141420;
+}
+
+/* Animated Glowing Border */
+.glow-border-box {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.glow-border-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent,
+    rgba(6, 182, 212, 0.6),
+    rgba(139, 92, 246, 0.8),
+    rgba(217, 70, 239, 0.6),
+    transparent 60%
+  );
+  animation: rotate 6s linear infinite;
+  z-index: 0;
+}
+
+.glow-border-content {
+  position: relative;
+  margin: 1px;
+  background: #050505;
+  border-radius: calc(1rem - 1px);
+  z-index: 1;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #94a3b8 40%, #38bdf8 70%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-neon {
+  background: linear-gradient(90deg, #06b6d4 0%, #8b5cf6 50%, #d946ef 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 3D Premium Metallic Crisp White + Cyan/Purple Depth Text */
+.gradient-text-3d {
+  background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 35%, #38bdf8 70%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 4px 12px rgba(6, 182, 212, 0.45))
+          drop-shadow(0px 12px 28px rgba(168, 85, 247, 0.5));
+}
+
+/* Dynamic Grid Lines Background */
+.grid-bg {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
