@@ -162,13 +162,13 @@ export const Projects: React.FC = () => {
                 </div>
 
                 {/* Links Footer */}
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                <div className="pt-4 border-t border-white/10 flex flex-col xs:flex-row items-center justify-between gap-2.5">
                   {project.liveDemoUrl && (
                     <a
                       href={project.liveDemoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-xs font-bold hover:opacity-90 transition-opacity flex items-center space-x-1.5 shadow-md shadow-cyan-500/20"
+                      className="w-full xs:w-auto justify-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-xs font-bold hover:opacity-90 transition-opacity flex items-center space-x-1.5 shadow-md shadow-cyan-500/20"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
                       <span>Live Demo</span>
@@ -180,7 +180,7 @@ export const Projects: React.FC = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:text-white hover:border-white/30 text-xs font-semibold transition-colors flex items-center space-x-1.5"
+                      className="w-full xs:w-auto justify-center px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:text-white hover:border-white/30 text-xs font-semibold transition-colors flex items-center space-x-1.5"
                     >
                       <Github className="w-3.5 h-3.5" />
                       <span>GitHub</span>

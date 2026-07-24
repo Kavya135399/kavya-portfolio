@@ -202,10 +202,10 @@ export const Certificates: React.FC = () => {
                 </p>
 
                 {/* Action Buttons */}
-                <div className="pt-2 flex flex-wrap items-center gap-3">
+                <div className="pt-2 flex flex-col xs:flex-row items-center gap-3 w-full">
                   <button
                     onClick={() => setModalOpen(true)}
-                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-xs font-bold flex items-center space-x-2 shadow-lg shadow-cyan-500/20 hover:opacity-90 transition-opacity"
+                    className="w-full xs:w-auto justify-center px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-xs font-bold flex items-center space-x-2 shadow-lg shadow-cyan-500/20 hover:opacity-90 transition-opacity"
                   >
                     <Eye className="w-4 h-4" />
                     <span>View Certificate</span>
@@ -213,7 +213,7 @@ export const Certificates: React.FC = () => {
 
                   <button
                     onClick={handleDownload}
-                    className="px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:text-white hover:border-white/30 text-xs font-semibold flex items-center space-x-2 transition-all"
+                    className="w-full xs:w-auto justify-center px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:text-white hover:border-white/30 text-xs font-semibold flex items-center space-x-2 transition-all"
                   >
                     <Download className="w-4 h-4 text-cyan-400" />
                     <span>Download Certificate</span>

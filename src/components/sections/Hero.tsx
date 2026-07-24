@@ -96,12 +96,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-wrap items-center justify-center gap-4 mb-12"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto max-w-sm sm:max-w-none mb-12"
         >
           {/* Hire Me */}
           <a
             href="#contact"
-            className="group px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 text-white font-bold text-sm shadow-[0_0_30px_rgba(6,182,212,0.4)] hover:shadow-[0_0_50px_rgba(217,70,239,0.7)] transition-all transform hover:-translate-y-1 flex items-center space-x-2"
+            className="group w-full sm:w-auto justify-center px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 text-white font-bold text-sm shadow-[0_0_30px_rgba(6,182,212,0.4)] hover:shadow-[0_0_50px_rgba(217,70,239,0.7)] transition-all transform hover:-translate-y-1 flex items-center space-x-2"
           >
             <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform" />
             <span>Hire Me</span>
@@ -110,7 +110,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           {/* Download Resume */}
           <button
             onClick={onOpenResume}
-            className="px-8 py-4 rounded-2xl border border-purple-500/40 bg-purple-950/30 text-purple-200 font-bold text-sm hover:bg-purple-900/50 hover:border-purple-400 transition-all backdrop-blur-md transform hover:-translate-y-1 flex items-center space-x-2 shadow-lg shadow-purple-500/10"
+            className="w-full sm:w-auto justify-center px-8 py-4 rounded-2xl border border-purple-500/40 bg-purple-950/30 text-purple-200 font-bold text-sm hover:bg-purple-900/50 hover:border-purple-400 transition-all backdrop-blur-md transform hover:-translate-y-1 flex items-center space-x-2 shadow-lg shadow-purple-500/10"
           >
             <Download className="w-4 h-4" />
             <span>Download Resume</span>
@@ -119,7 +119,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           {/* View Projects */}
           <a
             href="#projects"
-            className="px-8 py-4 rounded-2xl border border-white/10 bg-white/5 text-slate-200 font-bold text-sm hover:bg-white/10 hover:border-white/30 transition-all backdrop-blur-md transform hover:-translate-y-1 flex items-center space-x-2"
+            className="w-full sm:w-auto justify-center px-8 py-4 rounded-2xl border border-white/10 bg-white/5 text-slate-200 font-bold text-sm hover:bg-white/10 hover:border-white/30 transition-all backdrop-blur-md transform hover:-translate-y-1 flex items-center space-x-2"
           >
             <FolderGit2 className="w-4 h-4 text-cyan-400" />
             <span>View Projects</span>
