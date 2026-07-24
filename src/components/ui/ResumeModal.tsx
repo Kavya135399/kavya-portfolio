@@ -124,35 +124,6 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               data-lenis-prevent-touch
               className="p-5 sm:p-8 md:p-10 overflow-y-auto space-y-8 font-sans bg-[#09090e] text-slate-200 flex-1 max-h-[calc(92vh-70px)] selection:bg-purple-500/30 selection:text-white"
             >
-              {/* PDF Direct Download Banner Card */}
-              <div className="p-4 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-purple-950/40 to-slate-900/40 border border-cyan-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="flex items-center space-x-3 text-center sm:text-left">
-                  <div className="p-2.5 rounded-xl bg-cyan-500/20 text-cyan-400 shrink-0">
-                    <FileText className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-extrabold text-white">Official ATS-Friendly Canva-Style PDF Resume</h4>
-                    <p className="text-xs text-slate-400 font-mono">Format: A4 2-Column Executive PDF &nbsp;|&nbsp; Size: 195 KB &nbsp;|&nbsp; Verified for Recruiters</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-2 shrink-0">
-                  <button
-                    onClick={handleOpenNewTab}
-                    className="px-3 py-1.5 rounded-xl border border-white/10 bg-white/5 text-xs text-cyan-300 font-mono hover:bg-white/10 transition-colors flex items-center space-x-1"
-                  >
-                    <ExternalLink className="w-3.5 h-3.5" />
-                    <span>Open PDF</span>
-                  </button>
-                  <button
-                    onClick={handleDownload}
-                    className="px-3.5 py-1.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black text-xs font-extrabold font-mono transition-colors flex items-center space-x-1 shadow-md shadow-cyan-500/20"
-                  >
-                    <Download className="w-3.5 h-3.5" />
-                    <span>Download PDF</span>
-                  </button>
-                </div>
-              </div>
 
               {/* Profile Top Banner */}
               <div className="border-b border-white/10 pb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
