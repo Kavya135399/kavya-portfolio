@@ -72,7 +72,7 @@ export const Experience: React.FC = () => {
   ];
 
   return (
-    <section id="experience" className="relative py-32 bg-[#050505] text-white overflow-hidden selection:bg-purple-500/30 font-sans">
+    <section id="experience" className="relative py-12 sm:py-16 md:py-20 bg-[#050505] text-white overflow-hidden selection:bg-purple-500/30 font-sans scroll-mt-[80px]">
       {/* Background Mesh Pattern & Aurora Glow Circles */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 pointer-events-none"></div>
       <div className="absolute top-1/3 -left-32 w-[550px] h-[550px] bg-purple-600/10 rounded-full blur-[140px] pointer-events-none"></div>
@@ -80,7 +80,7 @@ export const Experience: React.FC = () => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16 space-y-4">
+        <div className="text-center mb-10 sm:mb-12 space-y-3">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

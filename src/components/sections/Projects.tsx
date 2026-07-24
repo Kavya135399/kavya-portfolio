@@ -45,10 +45,10 @@ export const Projects: React.FC = () => {
   });
 
   return (
-    <section id="projects" className="relative py-28 bg-[#050505] overflow-hidden font-sans">
+    <section id="projects" className="relative py-12 sm:py-16 md:py-20 bg-[#050505] overflow-hidden font-sans scroll-mt-[80px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +70,7 @@ export const Projects: React.FC = () => {
         </div>
 
         {/* Filter Bar & Search Input */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 sm:mb-10">
           {/* Category Tabs */}
           <div className="flex flex-wrap items-center gap-2">
             {categories.map((cat) => (

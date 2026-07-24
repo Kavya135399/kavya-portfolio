@@ -25,10 +25,10 @@ export const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="relative py-16 sm:py-28 bg-[#050505] overflow-hidden scroll-mt-[90px]">
+    <section id="skills" className="relative py-12 sm:py-16 md:py-20 bg-[#050505] overflow-hidden scroll-mt-[80px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ export const Skills: React.FC = () => {
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-8 sm:mb-10">
           {categories.map((cat) => {
             const isActive = activeTab === cat;
             return (

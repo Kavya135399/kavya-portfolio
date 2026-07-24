@@ -77,7 +77,7 @@ export const About: React.FC<AboutProps> = ({ onOpenResume }) => {
   ];
 
   return (
-    <section id="about" className="relative py-32 bg-[#050505] text-white overflow-hidden selection:bg-purple-500/30 font-sans">
+    <section id="about" className="relative py-12 sm:py-16 md:py-20 bg-[#050505] text-white overflow-hidden selection:bg-purple-500/30 font-sans scroll-mt-[80px]">
       {/* Background Mesh Pattern & Aurora Glow Circles */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 pointer-events-none"></div>
       <div className="absolute top-1/4 -left-32 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[150px] pointer-events-none"></div>
@@ -86,8 +86,8 @@ export const About: React.FC<AboutProps> = ({ onOpenResume }) => {
       {/* Spacious Full-Width Container (1400px) */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Main Balanced Two-Column Layout (LEFT 45% / RIGHT 55%, 80px Gap) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        {/* Main Balanced Two-Column Layout (LEFT 45% / RIGHT 55%, 48px Gap) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
           {/* ======================================================== */}
           {/* LEFT COLUMN (45%): FULL BODY PROFILE SHOWCASE & IDENTITY */}

@@ -36,12 +36,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
   }, [displayText, isDeleting, roleIndex]);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-[#050505]">
+    <section id="hero" className="relative min-h-[88vh] flex items-center justify-center pt-20 pb-8 sm:py-14 md:py-16 overflow-hidden bg-[#050505] scroll-mt-[80px]">
       {/* 3D Canvas Visual Engine */}
       <HeroCanvas />
 
       {/* Hero Content Overlay */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10 sm:py-16 text-center flex flex-col items-center">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 text-center flex flex-col items-center">
         {/* Availability Badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}

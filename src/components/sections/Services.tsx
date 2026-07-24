@@ -17,10 +17,10 @@ export const Services: React.FC = () => {
   };
 
   return (
-    <section id="services" className="relative py-28 bg-[#050505] overflow-hidden">
+    <section id="services" className="relative py-12 sm:py-16 md:py-20 bg-[#050505] overflow-hidden scroll-mt-[80px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ export const Services: React.FC = () => {
         </div>
 
         {/* Services Matrix Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {SERVICES.map((srv, idx) => {
             const Icon = getServiceIcon(srv.icon);
             return (

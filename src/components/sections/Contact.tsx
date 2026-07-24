@@ -19,10 +19,10 @@ export const Contact: React.FC = () => {
   } = useContactForm();
 
   return (
-    <section id="contact" className="relative py-28 bg-[#050505] text-white overflow-hidden">
+    <section id="contact" className="relative py-12 sm:py-16 md:py-20 bg-[#050505] text-white overflow-hidden scroll-mt-[80px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
