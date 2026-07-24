@@ -100,12 +100,12 @@ export const About: React.FC<AboutProps> = ({ onOpenResume }) => {
             className="lg:col-span-5 space-y-8 lg:sticky lg:top-28"
           >
             {/* Image Container with object-fit: contain (No face cropping!) */}
-            <div className="relative group w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[380px] lg:max-w-[420px] mx-auto">
+            <div className="relative group w-[80%] max-w-[320px] xs:max-w-[360px] sm:max-w-[380px] lg:max-w-[420px] mx-auto">
               {/* Outer Animated Aurora Glow Halo */}
               <div className="absolute -inset-1.5 rounded-[36px] bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 opacity-60 blur-2xl group-hover:opacity-100 transition duration-1000 group-hover:duration-300 animate-pulse"></div>
 
-              {/* Glass Frame Container: 340px to 620px height */}
-              <div className="relative w-full h-[340px] xs:h-[380px] sm:h-[480px] lg:h-[620px] rounded-[28px] sm:rounded-[32px] glass-card overflow-hidden p-3 sm:p-4 border border-white/10 bg-[#0c0c14]/90 backdrop-blur-2xl shadow-2xl flex flex-col justify-center items-center">
+              {/* Glass Frame Container: 360px to 620px height */}
+              <div className="relative w-full h-[360px] xs:h-[400px] sm:h-[480px] lg:h-[620px] rounded-[28px] sm:rounded-[32px] glass-card overflow-hidden p-3 sm:p-4 border border-white/10 bg-[#0c0c14]/90 backdrop-blur-2xl shadow-2xl flex flex-col justify-center items-center">
                 <div className="relative w-full h-full rounded-[24px] overflow-hidden bg-gradient-to-b from-[#090912] via-[#050508] to-[#0a0a14] flex items-center justify-center p-2">
                   
                   {/* FULL PHOTO DISPLAY with object-contain (No face cropping!) */}

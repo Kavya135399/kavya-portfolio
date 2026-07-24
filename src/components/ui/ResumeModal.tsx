@@ -74,13 +74,22 @@ VERIFIED CERTIFICATIONS:
           data-lenis-prevent
           data-lenis-prevent-wheel
           data-lenis-prevent-touch
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/80 backdrop-blur-md"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-xl"
         >
+          {/* Floating Top-Right Exit Button for Ultra Mobile Safe-Area Accessibility */}
+          <button
+            onClick={onClose}
+            aria-label="Close Resume Modal"
+            className="fixed top-4 right-4 z-[10000] w-12 h-12 rounded-2xl bg-rose-600/90 text-white border border-rose-400/40 shadow-2xl backdrop-blur-2xl flex items-center justify-center shrink-0 active:scale-95 hover:bg-rose-600"
+          >
+            <X className="w-6 h-6 text-white" />
+          </button>
+
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-4xl max-h-[90vh] bg-dark-card border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col"
+            className="relative w-full max-w-4xl max-h-[90vh] bg-dark-card border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col my-auto"
           >
             {/* Sticky Header Toolbar */}
             <div className="sticky top-0 z-50 flex items-center justify-between px-4 sm:px-6 py-3.5 border-b border-slate-800 bg-[#090912]/95 backdrop-blur-xl shrink-0">

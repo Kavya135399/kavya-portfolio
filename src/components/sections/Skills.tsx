@@ -25,7 +25,7 @@ export const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="relative py-28 bg-[#050505] overflow-hidden">
+    <section id="skills" className="relative py-16 sm:py-28 bg-[#050505] overflow-hidden scroll-mt-[90px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
