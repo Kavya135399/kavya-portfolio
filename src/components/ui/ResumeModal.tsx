@@ -122,8 +122,8 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                     <FileText className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-extrabold text-white">Official ATS-Friendly PDF Resume</h4>
-                    <p className="text-xs text-slate-400 font-mono">Format: A4 Printable PDF &nbsp;|&nbsp; Size: 4.8 KB &nbsp;|&nbsp; Verified for Recruiters</p>
+                    <h4 className="text-sm font-extrabold text-white">Official ATS-Friendly Canva-Style PDF Resume</h4>
+                    <p className="text-xs text-slate-400 font-mono">Format: A4 2-Column Executive PDF &nbsp;|&nbsp; Size: 195 KB &nbsp;|&nbsp; Verified for Recruiters</p>
                   </div>
                 </div>
 
