@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Download, Printer, ExternalLink, Award, BookOpen, Code, Mail, Phone, MapPin, Globe, Github, Linkedin, Briefcase, GraduationCap, Languages, CheckCircle } from 'lucide-react';
+import { X, Download, Printer, ExternalLink, Award, BookOpen, Code, Mail, Phone, MapPin, Globe, Github, Linkedin, Briefcase, GraduationCap, Languages, CheckCircle, FileText, Loader2 } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/portfolioData';
 
 interface ResumeModalProps {
@@ -9,81 +9,31 @@ interface ResumeModalProps {
 }
 
 export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
+  const [isDownloading, setIsDownloading] = useState(false);
+
   const handlePrint = () => {
     window.print();
   };
 
   const handleDownload = () => {
-    const content = `====================================================
-DAVE KAVYA H. - CURRICULUM VITAE
-4th Year M.Sc. IT Student | Full Stack (MERN) Developer | AI/ML Enthusiast
-Email: kavyaofficial.it@gmail.com
-Location: Ahmedabad, Gujarat, India
-LinkedIn: https://www.linkedin.com/in/kavya-dave-baa617406
-Portfolio: https://kavyadave-portfolio.netlify.app
-GitHub: https://github.com/Kavya135399
-Status: Available for Internship | Immediate Joining
-====================================================
+    setIsDownloading(true);
+    const pdfUrl = '/resume/Kavya_Dave_Resume.pdf';
 
-SUMMARY:
-Motivated and detail-oriented 4th Year M.Sc. IT student at Gujarat University with a strong foundation in Full Stack Web Development, MERN Stack, and Artificial Intelligence & Machine Learning. Skilled in React.js, Node.js, JavaScript, Python, PHP, MongoDB, and MySQL, with hands-on experience developing scalable web applications and AI/ML solutions. Seeking a Software Developer, MERN Stack Developer, or AI/ML Internship to apply technical skills, gain industry experience, and contribute to innovative projects.
+    setTimeout(() => {
+      const link = document.createElement('a');
+      link.href = pdfUrl;
+      link.download = 'Kavya_Dave_Resume.pdf';
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setIsDownloading(false);
+    }, 400);
+  };
 
-EDUCATION:
-1. K.S. School of Business Management & Information Technology (06/2023 – 05/2028 | Ahmedabad)
-   - Master of Science in Information Technology (M.Sc. IT) - Gujarat University
-   - Currently pursuing 4th Year Integrated M.Sc. IT
-   - Focus Areas: MERN Stack, Full Stack Development, Artificial Intelligence & Machine Learning
-
-2. Swaminarayan Vidyalaya (06/2022 – 05/2023 | Ahmedabad)
-   - Higher Secondary Certificate (HSC) - Percentile Rank: 95.87
-
-3. Swaminarayan Vidyalaya (06/2020 – 05/2021 | Ahmedabad)
-   - Secondary School Certificate (SSC) - Percentile Rank: 94.15
-
-SKILLS & COMPETENCIES:
-- React.js: React Hooks, Components, React Router, Responsive UI
-- JavaScript: ES6+, DOM Manipulation, Async/Await
-- Git & GitHub: Version Control, Branching, Repository Management
-- Node.js: Express.js, REST APIs, JWT Authentication
-- Python: Flask, Machine Learning Basics, Pandas, NumPy, Scikit-learn
-- MongoDB: CRUD Operations, Database Design, Mongoose
-
-LANGUAGES:
-- English: Read, Write, Speak
-- Hindi: Read, Write, Speak
-- Gujarati: Read, Write, Speak
-
-PROJECTS:
-1. Car Rental Website (03/2026 – 05/2026)
-   - Technologies: Laravel, PHP, MySQL, Bootstrap
-   - Developed a responsive car rental website using Laravel, PHP, and MySQL.
-   - Implemented vehicle booking and admin dashboard.
-   - Designed a secure, user-friendly interface.
-
-2. Placement Portal (MERN Stack) (01/2026 – 03/2026)
-   - Technologies: MongoDB, Express.js, React.js, Node.js
-   - Developed a MERN-based placement portal.
-   - Implemented JWT authentication and REST APIs.
-   - Built job posting and application tracking features.
-
-3. Breast Cancer Malignancy Prediction (Machine Learning) (02/2026 – 04/2026)
-   - Technologies: Python, Flask, Scikit-learn, Pandas, NumPy, Machine Learning
-   - Developed a machine learning model using Python and Scikit-learn.
-   - Built a Flask web application for prediction.
-   - Achieved real-time benign/malignant prediction.
-====================================================`;
-
-    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Dave_Kavya_H_Resume.txt';
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const handleOpenNewTab = () => {
+    window.open('/resume/Kavya_Dave_Resume.pdf', '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -93,7 +43,7 @@ PROJECTS:
           data-lenis-prevent
           data-lenis-prevent-wheel
           data-lenis-prevent-touch
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-xl"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-xl font-sans"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -101,7 +51,7 @@ PROJECTS:
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             className="relative w-full max-w-4xl max-h-[92vh] bg-[#0c0c14] border border-white/15 rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col my-auto"
           >
-            {/* Sticky Header Toolbar with EXACTLY ONE Close (✕) Button */}
+            {/* Sticky Header Toolbar with SINGLE Fixed Close (✕) Button */}
             <div className="sticky top-0 z-50 flex items-center justify-between px-4 sm:px-6 py-3.5 border-b border-white/10 bg-[#07070d]/95 backdrop-blur-xl shrink-0">
               <div className="flex items-center space-x-3">
                 <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 p-0.5 shadow-md">
@@ -113,27 +63,41 @@ PROJECTS:
                 </div>
                 <div>
                   <h3 className="text-sm sm:text-base font-extrabold text-white tracking-wide">Dave Kavya H.</h3>
-                  <p className="text-[10px] font-mono text-cyan-400">Curriculum Vitae Preview</p>
+                  <p className="text-[10px] font-mono text-cyan-400">ATS PDF Resume (4.8 KB)</p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-2 sm:space-x-3">
+                {/* Open PDF in New Tab */}
                 <button
-                  onClick={handlePrint}
-                  className="px-3 py-2 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:text-white hover:border-white/30 transition-colors flex items-center text-xs font-semibold space-x-1.5 min-h-[44px]"
+                  onClick={handleOpenNewTab}
+                  className="px-3 py-2 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:text-white hover:border-white/30 transition-all flex items-center text-xs font-semibold space-x-1.5 min-h-[44px] hover:scale-105 active:scale-95"
+                  title="Open PDF in New Tab"
                 >
-                  <Printer className="w-4 h-4 text-purple-400" />
-                  <span className="hidden sm:inline">Print</span>
-                </button>
-                <button
-                  onClick={handleDownload}
-                  className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 text-white font-bold hover:opacity-90 transition-opacity flex items-center text-xs space-x-1.5 shadow-lg shadow-cyan-500/20 min-h-[44px]"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Download CV</span>
+                  <ExternalLink className="w-4 h-4 text-cyan-400" />
+                  <span className="hidden sm:inline">Preview PDF</span>
                 </button>
 
-                {/* SINGLE FIXED/STICKY CLOSE (✕) BUTTON (MIN TOUCH TARGET 48px x 48px) */}
+                {/* Download Resume PDF Button */}
+                <button
+                  onClick={handleDownload}
+                  disabled={isDownloading}
+                  className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 text-white font-bold hover:opacity-95 transition-all flex items-center text-xs space-x-1.5 shadow-lg shadow-cyan-500/20 min-h-[44px] hover:scale-105 active:scale-95 disabled:opacity-75"
+                >
+                  {isDownloading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin text-white" />
+                      <span>Downloading...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Download className="w-4 h-4" />
+                      <span>Download PDF</span>
+                    </>
+                  )}
+                </button>
+
+                {/* SINGLE FIXED CLOSE (✕) BUTTON - MIN TOUCH TARGET 48px x 48px */}
                 <button
                   onClick={onClose}
                   aria-label="Close Resume Modal"
@@ -144,13 +108,43 @@ PROJECTS:
               </div>
             </div>
 
-            {/* Printable Resume Content Container */}
+            {/* Resume Content & Preview Container */}
             <div
               data-lenis-prevent
               data-lenis-prevent-wheel
               data-lenis-prevent-touch
               className="p-5 sm:p-8 md:p-10 overflow-y-auto space-y-8 font-sans bg-[#09090e] text-slate-200 flex-1 max-h-[calc(92vh-70px)] selection:bg-purple-500/30 selection:text-white"
             >
+              {/* PDF Direct Download Banner Card */}
+              <div className="p-4 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-purple-950/40 to-slate-900/40 border border-cyan-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center space-x-3 text-center sm:text-left">
+                  <div className="p-2.5 rounded-xl bg-cyan-500/20 text-cyan-400 shrink-0">
+                    <FileText className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-extrabold text-white">Official ATS-Friendly PDF Resume</h4>
+                    <p className="text-xs text-slate-400 font-mono">Format: A4 Printable PDF &nbsp;|&nbsp; Size: 4.8 KB &nbsp;|&nbsp; Verified for Recruiters</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-2 shrink-0">
+                  <button
+                    onClick={handleOpenNewTab}
+                    className="px-3 py-1.5 rounded-xl border border-white/10 bg-white/5 text-xs text-cyan-300 font-mono hover:bg-white/10 transition-colors flex items-center space-x-1"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>Open PDF</span>
+                  </button>
+                  <button
+                    onClick={handleDownload}
+                    className="px-3.5 py-1.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black text-xs font-extrabold font-mono transition-colors flex items-center space-x-1 shadow-md shadow-cyan-500/20"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    <span>Download PDF</span>
+                  </button>
+                </div>
+              </div>
+
               {/* Profile Top Banner */}
               <div className="border-b border-white/10 pb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                 <div className="space-y-2">
@@ -202,7 +196,7 @@ PROJECTS:
               <div className="space-y-2">
                 <h2 className="text-xs font-mono font-bold tracking-wider text-slate-400 uppercase flex items-center space-x-2">
                   <Briefcase className="w-4 h-4 text-cyan-400" />
-                  <span>Summary</span>
+                  <span>Professional Summary</span>
                 </h2>
                 <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed">
                   Motivated and detail-oriented 4th Year M.Sc. IT student at Gujarat University with a strong foundation in Full Stack Web Development, MERN Stack, and Artificial Intelligence & Machine Learning. Skilled in React.js, Node.js, JavaScript, Python, PHP, MongoDB, and MySQL, with hands-on experience developing scalable web applications and AI/ML solutions. Seeking a Software Developer, MERN Stack Developer, or AI/ML Internship to apply technical skills, gain industry experience, and contribute to innovative projects.
@@ -262,7 +256,7 @@ PROJECTS:
               <div className="space-y-3">
                 <h2 className="text-xs font-mono font-bold tracking-wider text-slate-400 uppercase flex items-center space-x-2">
                   <Code className="w-4 h-4 text-cyan-400" />
-                  <span>Skills</span>
+                  <span>Technical Skills</span>
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
                   <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
@@ -314,11 +308,11 @@ PROJECTS:
                 </div>
               </div>
 
-              {/* Projects */}
+              {/* Key Projects */}
               <div className="space-y-3">
                 <h2 className="text-xs font-mono font-bold tracking-wider text-slate-400 uppercase flex items-center space-x-2">
                   <Award className="w-4 h-4 text-cyan-400" />
-                  <span>Projects</span>
+                  <span>Key Projects</span>
                 </h2>
                 <div className="space-y-3">
                   {/* Car Rental Website */}
@@ -379,6 +373,18 @@ PROJECTS:
                   </div>
                 </div>
               </div>
+
+              {/* PDF Preview Frame Option */}
+              <div className="pt-4 border-t border-white/10 text-center">
+                <button
+                  onClick={handleOpenNewTab}
+                  className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-400/40 text-xs font-mono text-cyan-300 hover:text-white transition-all shadow-md"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  <span>Open Full PDF in New Tab</span>
+                </button>
+              </div>
+
             </div>
           </motion.div>
         </div>
