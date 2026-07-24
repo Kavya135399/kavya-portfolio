@@ -41,13 +41,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
       <HeroCanvas />
 
       {/* Hero Content Overlay */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center flex flex-col items-center">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10 sm:py-16 text-center flex flex-col items-center">
         {/* Availability Badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center space-x-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-cyan-300 text-xs font-mono mb-6 backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.2)]"
+          className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-cyan-300 text-[11px] sm:text-xs font-mono mb-4 sm:mb-6 backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.2)]"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -61,7 +61,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-lg sm:text-xl font-mono text-purple-400 tracking-wider mb-2"
+          className="text-sm sm:text-xl font-mono text-purple-400 tracking-wider mb-1 sm:mb-2"
         >
           Hello, I'm
         </motion.p>
@@ -71,7 +71,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase"
+          className="text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-3 sm:mb-6 uppercase"
         >
           <span className="gradient-text-neon">
             KAVYA DAVE
@@ -83,11 +83,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="h-12 flex items-center justify-center mb-8"
+          className="h-8 sm:h-12 flex items-center justify-center mb-6 sm:mb-8"
         >
-          <span className="text-xl sm:text-2xl md:text-3xl font-mono text-slate-300 tracking-wide font-medium">
+          <span className="text-base xs:text-lg sm:text-2xl md:text-3xl font-mono text-slate-300 tracking-wide font-medium">
             {displayText}
-            <span className="inline-block w-0.5 h-7 ml-1 bg-cyan-400 animate-pulse"></span>
+            <span className="inline-block w-0.5 h-5 sm:h-7 ml-1 bg-cyan-400 animate-pulse"></span>
           </span>
         </motion.div>
 
@@ -96,12 +96,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto max-w-sm sm:max-w-none mb-12"
+          className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 w-full sm:w-auto max-w-[280px] xs:max-w-xs sm:max-w-none mb-8 sm:mb-12"
         >
           {/* Hire Me */}
           <a
             href="#contact"
-            className="group w-full sm:w-auto justify-center px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 text-white font-bold text-sm shadow-[0_0_30px_rgba(6,182,212,0.4)] hover:shadow-[0_0_50px_rgba(217,70,239,0.7)] transition-all transform hover:-translate-y-1 flex items-center space-x-2"
+            className="group w-full sm:w-auto justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 text-white font-bold text-xs sm:text-sm shadow-[0_0_30px_rgba(6,182,212,0.4)] hover:shadow-[0_0_50px_rgba(217,70,239,0.7)] transition-all transform hover:-translate-y-1 flex items-center space-x-2"
           >
             <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform" />
             <span>Hire Me</span>
@@ -110,7 +110,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           {/* Download Resume */}
           <button
             onClick={onOpenResume}
-            className="w-full sm:w-auto justify-center px-8 py-4 rounded-2xl border border-purple-500/40 bg-purple-950/30 text-purple-200 font-bold text-sm hover:bg-purple-900/50 hover:border-purple-400 transition-all backdrop-blur-md transform hover:-translate-y-1 flex items-center space-x-2 shadow-lg shadow-purple-500/10"
+            className="w-full sm:w-auto justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl border border-purple-500/40 bg-purple-950/30 text-purple-200 font-bold text-xs sm:text-sm hover:bg-purple-900/50 hover:border-purple-400 transition-all backdrop-blur-md transform hover:-translate-y-1 flex items-center space-x-2 shadow-lg shadow-purple-500/10"
           >
             <Download className="w-4 h-4" />
             <span>Download Resume</span>
@@ -119,7 +119,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           {/* View Projects */}
           <a
             href="#projects"
-            className="w-full sm:w-auto justify-center px-8 py-4 rounded-2xl border border-white/10 bg-white/5 text-slate-200 font-bold text-sm hover:bg-white/10 hover:border-white/30 transition-all backdrop-blur-md transform hover:-translate-y-1 flex items-center space-x-2"
+            className="w-full sm:w-auto justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 text-slate-200 font-bold text-xs sm:text-sm hover:bg-white/10 hover:border-white/30 transition-all backdrop-blur-md transform hover:-translate-y-1 flex items-center space-x-2"
           >
             <FolderGit2 className="w-4 h-4 text-cyan-400" />
             <span>View Projects</span>
