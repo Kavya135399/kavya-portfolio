@@ -19,17 +19,26 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
     setIsDownloading(true);
     const pdfUrl = '/resume/Kavya_Dave_Resume.pdf';
 
-    setTimeout(() => {
-      const link = document.createElement('a');
-      link.href = pdfUrl;
-      link.download = 'Kavya_Dave_Resume.pdf';
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      setIsDownloading(false);
-    }, 400);
+    fetch(pdfUrl, { method: 'HEAD' })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Resume PDF file not found');
+        }
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = 'Kavya_Dave_Resume.pdf';
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      })
+      .catch(() => {
+        alert('Original Resume PDF file is currently unavailable. Please try again later.');
+      })
+      .finally(() => {
+        setIsDownloading(false);
+      });
   };
 
   const handleOpenNewTab = () => {
