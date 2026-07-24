@@ -32,7 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
         const el = document.getElementById(section);
         if (el) {
           const rect = el.getBoundingClientRect();
-          return rect.top <= 150 && rect.bottom >= 150;
+          return rect.top <= 160 && rect.bottom >= 160;
         }
         return false;
       });
@@ -46,17 +46,48 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+
+    const targetId = href.substring(1);
+    const targetElement = document.getElementById(targetId);
+
+    if (!targetElement) return;
+
+    // Small delay to allow mobile drawer animation to close smoothly before scrolling
+    setTimeout(() => {
+      const lenis = (window as any).__lenis;
+      if (lenis) {
+        lenis.scrollTo(targetElement, { offset: -90, duration: 1.2 });
+      } else {
+        const headerOffset = 90;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 50);
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'py-3 bg-[#050505]/80 backdrop-blur-xl border-b border-white/10 shadow-2xl'
+          ? 'py-3 bg-[#050505]/85 backdrop-blur-xl border-b border-white/10 shadow-2xl'
           : 'py-5 bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
-        <a href="#hero" className="flex items-center space-x-3 group">
+        <a
+          href="#hero"
+          onClick={(e) => handleNavClick(e, '#hero')}
+          className="flex items-center space-x-3 group cursor-pointer"
+        >
           <div className="relative w-10 h-10 rounded-2xl bg-gradient-to-tr from-cyan-500 via-purple-600 to-pink-500 p-0.5 shadow-[0_0_20px_rgba(139,92,246,0.4)] group-hover:scale-105 transition-transform">
             <div className="w-full h-full bg-[#09090e] rounded-[14px] flex items-center justify-center">
               <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 text-sm tracking-tighter">
@@ -82,7 +113,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               <a
                 key={link.name}
                 href={link.href}
-                className={`relative px-3.5 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
+                onClick={(e) => handleNavClick(e, link.href)}
+                className={`relative px-3.5 py-1.5 text-xs font-medium rounded-full transition-all duration-200 cursor-pointer ${
                   isActive
                     ? 'text-white'
                     : 'text-slate-400 hover:text-slate-200'
@@ -115,7 +147,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           {/* Hire Me CTA */}
           <a
             href="#contact"
-            className="px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 text-white text-xs font-bold shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(217,70,239,0.6)] transition-all hover:scale-105 flex items-center space-x-1.5"
+            onClick={(e) => handleNavClick(e, '#contact')}
+            className="px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 text-white text-xs font-bold shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(217,70,239,0.6)] transition-all hover:scale-105 flex items-center space-x-1.5 cursor-pointer"
           >
             <Sparkles className="w-3.5 h-3.5" />
             <span>Hire Me</span>
@@ -127,6 +160,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2.5 rounded-2xl border border-white/10 bg-white/5 text-slate-200"
+            aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -147,10 +181,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-sm font-medium text-slate-300 hover:text-cyan-400 py-2 border-b border-white/5"
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="text-sm font-medium text-slate-300 hover:text-cyan-400 py-2 border-b border-white/5 cursor-pointer flex items-center justify-between"
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  {activeSection === link.href.substring(1) && (
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#06b6d4]"></span>
+                  )}
                 </a>
               ))}
               <div className="pt-4 flex flex-col space-y-3">
@@ -166,8 +203,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                 </button>
                 <a
                   href="#contact"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-xs font-bold text-center shadow-lg shadow-cyan-500/20"
+                  onClick={(e) => handleNavClick(e, '#contact')}
+                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-xs font-bold text-center shadow-lg shadow-cyan-500/20 cursor-pointer"
                 >
                   Hire Me Now
                 </a>

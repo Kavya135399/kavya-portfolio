@@ -33,6 +33,8 @@ export function App() {
       touchMultiplier: 2,
     });
 
+    (window as any).__lenis = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
