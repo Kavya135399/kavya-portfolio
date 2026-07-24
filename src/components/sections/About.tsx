@@ -200,7 +200,7 @@ export const About: React.FC<AboutProps> = ({ onOpenResume }) => {
 
               {/* Large Desktop 52px Title */}
               <h2 className="text-[28px] sm:text-[36px] lg:text-[52px] font-extrabold tracking-tight uppercase leading-tight text-white">
-                Software Engineer • <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">AI/ML Engineer</span> • MERN Stack Developer
+                <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">AI/ML Engineer</span> • MERN Stack Developer
               </h2>
 
               {/* Professional Narrative Paragraphs */}
