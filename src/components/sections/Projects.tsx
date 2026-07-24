@@ -114,13 +114,13 @@ export const Projects: React.FC = () => {
               className="glass-card rounded-3xl overflow-hidden border border-white/10 group flex flex-col justify-between"
             >
               {/* Image Preview Container */}
-              <div className="relative h-60 w-full overflow-hidden bg-slate-900">
+              <div className="relative h-52 sm:h-60 w-full overflow-hidden bg-[#07070e] p-2 flex items-center justify-center border-b border-white/10">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105"
+                  loading="lazy"
+                  className="w-full h-full object-contain object-center group-hover:scale-[1.03] transition-transform duration-500 rounded-2xl"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#09090e] via-transparent to-transparent opacity-90"></div>
 
                 {/* Category Badge */}
                 <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/70 border border-white/20 text-cyan-300 text-xs font-mono backdrop-blur-md">

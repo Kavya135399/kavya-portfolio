@@ -14,30 +14,57 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
   };
 
   const handleDownload = () => {
-    const element = document.createElement('a');
-    const file = new Blob([
-      `KAVYA DAVE - RESUME\n` +
-      `AI & Machine Learning Engineer | Full Stack Developer\n` +
-      `Email: ${PERSONAL_INFO.email} | Location: ${PERSONAL_INFO.location}\n\n` +
-      `EDUCATION:\n` +
-      `- MSc IT Student (Master of Science in Information Technology)\n\n` +
-      `KEY SKILLS:\n` +
-      `- Programming: Python, Java, JavaScript, PHP, C\n` +
-      `- Frontend: React, HTML, CSS, Tailwind CSS, Bootstrap\n` +
-      `- Backend: Node.js, Express.js, Laravel, Flask\n` +
-      `- Databases: MongoDB, MySQL, Firebase\n` +
-      `- AI/ML: Scikit-Learn, TensorFlow, Data Analysis\n\n` +
-      `FEATURED PROJECTS:\n` +
-      `- HomeSeva: Full Stack Home Services Platform with PhonePe PG\n` +
-      `- Om Shanti Travels: Laravel & MySQL Car Rental Web Application\n` +
-      `- Placement Management System: MERN Stack Campus Recruitment Portal\n` +
-      `- Breast Cancer Prediction: Machine Learning Medical Diagnostic System\n`
-    ], { type: 'text/plain' });
-    element.href = URL.createObjectURL(file);
-    element.download = 'Kavya_Dave_Resume.txt';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
+    const content = `====================================================
+KAVYA DAVE - CURRICULUM VITAE
+AI & Machine Learning Engineer | MERN Stack Developer
+Email: ${PERSONAL_INFO.email}
+GitHub: ${PERSONAL_INFO.socials.github}
+LinkedIn: ${PERSONAL_INFO.socials.linkedin}
+====================================================
+
+ACADEMIC QUALIFICATIONS:
+- Master of Science in Information Technology (M.Sc. IT)
+  K.S. School of Business Management & Information Technology, Gujarat University
+  (Currently Pursuing – 4th Year, 2023 – Present)
+
+- Higher Secondary Certificate (HSC)
+  Swaminarayan Vidhya Laya (Completed May 2023 - 95.87 Percentile Rank)
+
+- Secondary School Certificate (SSC)
+  Swaminarayan Vidhya Laya (Completed May 2021 - 94.15 Percentile Rank)
+
+TECHNICAL CAPABILITIES:
+- Languages: Python, Java, JavaScript, PHP, C
+- AI/ML & Data Science: Machine Learning, Scikit-Learn, TensorFlow, Pandas, NumPy
+- Frontend Development: React.js, HTML5, CSS3, Tailwind CSS, JavaScript
+- Backend Development: Node.js, Express.js, Flask
+- Databases & Tools: MongoDB, MySQL, Git, GitHub, Docker, Vercel, Render
+
+FEATURED PROJECTS:
+1. Om Shanti Travels (Car Rental Website)
+   - Live Demo: https://car-rental-website-1-mnnp.onrender.com/
+   - GitHub: https://github.com/Kavya135399/car_rental_website
+2. OncoDetect (AI Breast Cancer Prediction System)
+   - GitHub: https://github.com/Kavya135399/Breast-Cancer-Prediction
+3. PlaceHub (Campus Recruitment & Placement Portal)
+   - GitHub: https://github.com/Kavya135399/Placement-Management-System
+
+VERIFIED CERTIFICATIONS:
+- Diploma in Multilingual Computer Programming (DMCP)
+  Issued by C-DAC (Ministry of Electronics & IT, Govt. of India) - Grade 'A'
+====================================================`;
+
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Kavya_Dave_Resume.txt';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
 
   return (
