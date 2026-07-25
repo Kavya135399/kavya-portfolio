@@ -102,7 +102,7 @@ export const Projects: React.FC = () => {
         </div>
 
         {/* Projects 3D Glass Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {filteredProjects.map((project, idx) => (
             <motion.div
               key={project.id}
@@ -110,29 +110,29 @@ export const Projects: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              whileHover={{ y: -8 }}
-              className="glass-card rounded-3xl overflow-hidden border border-white/10 group flex flex-col justify-between"
+              whileHover={{ y: -6 }}
+              className="glass-card rounded-3xl overflow-hidden border border-white/10 group flex flex-col justify-between h-full shadow-xl hover:border-cyan-500/40 transition-all duration-300"
             >
-              {/* Image Preview Container */}
-              <div className="relative h-52 sm:h-60 w-full overflow-hidden bg-[#07070e] p-2 flex items-center justify-center border-b border-white/10">
+              {/* Responsive 16:9 Image Preview Container */}
+              <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#07070e] border-b border-white/10 shrink-0">
                 <img
                   src={project.image}
                   alt={project.title}
                   loading="lazy"
-                  className="w-full h-full object-contain object-center group-hover:scale-[1.03] transition-transform duration-500 rounded-2xl"
+                  className="w-full h-full object-cover object-top sm:group-hover:scale-105 transition-transform duration-500"
                 />
 
                 {/* Category Badge */}
-                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/70 border border-white/20 text-cyan-300 text-xs font-mono backdrop-blur-md">
+                <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/75 border border-white/20 text-cyan-300 text-[11px] font-mono backdrop-blur-md font-bold shadow-md">
                   {project.category}
                 </div>
 
                 {/* Quick View Trigger */}
                 <button
                   onClick={() => setSelectedProject(project)}
-                  className="absolute bottom-4 right-4 p-2.5 rounded-2xl bg-white/10 hover:bg-cyan-500/30 text-white backdrop-blur-md border border-white/20 transition-all hover:scale-110 flex items-center space-x-1.5 text-xs font-mono shadow-lg"
+                  className="absolute bottom-3 right-3 px-3 py-1.5 rounded-xl bg-black/70 hover:bg-cyan-500/30 text-white backdrop-blur-md border border-white/20 transition-all hover:scale-105 flex items-center space-x-1.5 text-[11px] font-mono shadow-lg"
                 >
-                  <Eye className="w-4 h-4 text-cyan-400" />
+                  <Eye className="w-3.5 h-3.5 text-cyan-400" />
                   <span>Inspect Spec</span>
                 </button>
               </div>
