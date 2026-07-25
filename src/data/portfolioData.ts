@@ -92,66 +92,120 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: "ai-chatbot",
+    title: "AI Chatbot",
+    subtitle: "Conversational AI Assistant & Real-time Chat UI",
+    description: "An AI-powered chatbot built with modern web technologies that provides intelligent conversational responses. It features a clean UI, responsive design, and real-time interaction for a smooth chat experience.",
+    longDescription: "An AI-powered chatbot application featuring a glassmorphism chat interface, custom quick-action prompts, date/time tools, theme toggles, and seamless integration with conversational AI APIs for instantaneous intelligent responses.",
+    category: "AI/ML",
+    techBadges: ["React", "JavaScript", "HTML", "CSS", "AI API Integration"],
+    features: [
+      "Real-time conversational AI responses",
+      "Clean glassmorphism chat UI design",
+      "Interactive quick prompt buttons & date tools",
+      "Responsive layout for desktop & mobile",
+      "Dark theme & chat history state management",
+      "API integration for natural language processing"
+    ],
+    githubUrl: "https://github.com/Kavya135399/aichatbot",
+    image: "/projects/aichatbot.png",
+    featured: true
+  },
+  {
+    id: "coffee-shop-website",
+    title: "Coffee Shop Website",
+    subtitle: "Noir Brew - Handcrafted Coffee Portal",
+    description: "A responsive coffee shop website showcasing products, menu, services, and contact information. Designed with an attractive UI and smooth navigation to provide a great user experience.",
+    longDescription: "Noir Brew is a luxury, cinematic coffee shop portal designed for handcrafted coffee lovers. Features single-origin product collections, brand storytelling, brewing processes, media galleries, and reservation contact modules.",
+    category: "Full Stack",
+    techBadges: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+    features: [
+      "Cinematic typography & dark luxury design",
+      "Handcrafted coffee collection showcase",
+      "Interactive product menu & pricing guide",
+      "Smooth scroll navigation & mobile menu",
+      "Contact inquiry & reservation section",
+      "Fully responsive cross-device layout"
+    ],
+    githubUrl: "https://github.com/Kavya135399/coffee",
+    image: "/projects/coffee.png",
+    featured: true
+  },
+  {
+    id: "restaurant-website",
+    title: "Restaurant Website",
+    subtitle: "Gourmet Culinary & Dining Showcase",
+    description: "A fully responsive restaurant website featuring menu sections, food gallery, booking/contact forms, and modern UI components. Optimized for desktop and mobile devices.",
+    longDescription: "A full-featured restaurant web application offering culinary dish showcases, gourmet food galleries, interactive menu categories, customer booking forms, and dynamic backend management with PHP and MySQL.",
+    category: "Full Stack",
+    techBadges: ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Bootstrap"],
+    features: [
+      "Dynamic food gallery & gourmet dish showcase",
+      "Categorized menu with pricing & descriptions",
+      "Table reservation & contact form validation",
+      "PHP & MySQL database integration",
+      "Mobile-optimized responsive design",
+      "Modern UI elements & smooth transitions"
+    ],
+    githubUrl: "https://github.com/Kavya135399/restaurant",
+    image: "/projects/restaurant.jpg",
+    featured: true
+  },
+  {
     id: "om-shanti-travels",
     title: "Om Shanti Travels",
     subtitle: "Luxury Car Rental & Travel Portal",
     description: "Om Shanti Travels provides premium car rental services for city tours, airport transfers, and outstation trips. Built to make travel safe, comfortable, and enjoyable.",
     longDescription: "A full-featured web platform for Om Shanti Travels offering luxury car rentals, city tour packages, outstation trips, vehicle fleet showcase, booking contact system, and responsive user experience.",
     category: "Full Stack",
-    techBadges: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "Render"],
+    techBadges: ["Laravel", "PHP", "MySQL", "Bootstrap"],
     features: [
       "Dynamic luxury vehicle rental showcase",
       "City tours, airport transfers & outstation trips",
       "Online booking inquiry & contact reservation system",
-      "Responsive glassmorphism UI with dark theme",
-      "Hosted & live on Render cloud platform",
+      "Responsive UI with dark theme",
       "Fleet inventory management system"
     ],
-    liveDemoUrl: "https://car-rental-website-1-mnnp.onrender.com/",
     githubUrl: "https://github.com/Kavya135399/car_rental_website",
     image: "/projects/car-rental.jpg",
     featured: true
   },
   {
-    id: "breast-cancer-prediction",
-    title: "OncoDetect",
-    subtitle: "Advanced AI Breast Cancer Prediction System",
-    description: "Leveraging Machine Learning algorithms to assist in early diagnosis. Fast, accurate, and secure analysis of cell nucleus characteristics to support medical decisions.",
-    longDescription: "OncoDetect is a state-of-the-art medical AI platform that analyzes cell nucleus characteristics from fine-needle aspirate (FNA) diagnostic metrics using trained Machine Learning models to assist healthcare professionals with 97%+ accuracy.",
-    category: "AI/ML",
-    techBadges: ["Python", "Machine Learning", "Scikit-Learn", "Flask", "Pandas", "NumPy"],
-    features: [
-      "Early diagnostic ML prediction algorithms",
-      "Analysis of cell nucleus diagnostic metrics",
-      "Instantaneous risk assessment classification",
-      "High accuracy confidence probability scoring",
-      "Medical decision support dashboard",
-      "Clean clinical web interface"
-    ],
-    liveDemoUrl: "https://github.com/Kavya135399/Breast-Cancer-Prediction",
-    githubUrl: "https://github.com/Kavya135399/Breast-Cancer-Prediction",
-    image: "/projects/breast-cancer.jpg",
-    featured: true
-  },
-  {
     id: "placement-management",
-    title: "PlaceHub",
-    subtitle: "Campus Recruitment & Placement Portal",
+    title: "Placement Portal (MERN Stack)",
+    subtitle: "Campus Recruitment & Placement System",
     description: "A unified ecosystem empowering students, companies, and placement cells to connect, collaborate, and cultivate future success stories.",
     longDescription: "PlaceHub automates campus placement drives, student resume submissions, company job listings, interview slot schedules, and placement tracking for university placement officers and corporate recruiters.",
     category: "Full Stack",
-    techBadges: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+    techBadges: ["MongoDB", "Express.js", "React.js", "Node.js"],
     features: [
       "Unified campus recruitment ecosystem",
       "Student profile & automated resume manager",
       "Corporate job drive posting & applicant tracking",
       "Interview calendar & placement status logs",
-      "Eligibility verification & candidate shortlisting",
-      "Analytics dashboard for placement officers"
+      "Eligibility verification & candidate shortlisting"
     ],
-    liveDemoUrl: "https://github.com/Kavya135399/Placement-Management-System",
     githubUrl: "https://github.com/Kavya135399/Placement-Management-System",
     image: "/projects/placement-portal.jpg",
+    featured: true
+  },
+  {
+    id: "breast-cancer-prediction",
+    title: "Breast Cancer Prediction",
+    subtitle: "Machine Learning Diagnostic System",
+    description: "Leveraging Machine Learning algorithms to assist in early diagnosis. Fast, accurate, and secure analysis of cell nucleus characteristics to support medical decisions.",
+    longDescription: "An advanced medical AI platform that analyzes cell nucleus characteristics from fine-needle aspirate (FNA) diagnostic metrics using trained Machine Learning models to assist healthcare professionals with 97%+ accuracy.",
+    category: "AI/ML",
+    techBadges: ["Python", "Flask", "Scikit-learn", "Pandas", "NumPy", "Machine Learning"],
+    features: [
+      "Early diagnostic ML prediction algorithms",
+      "Analysis of cell nucleus diagnostic metrics",
+      "Instantaneous risk assessment classification",
+      "High accuracy confidence probability scoring",
+      "Medical decision support dashboard"
+    ],
+    githubUrl: "https://github.com/Kavya135399/Breast-Cancer-Prediction",
+    image: "/projects/breast-cancer.jpg",
     featured: true
   }
 ];

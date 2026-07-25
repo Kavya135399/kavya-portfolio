@@ -161,31 +161,17 @@ export const Projects: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Links Footer */}
-                <div className="pt-4 border-t border-white/10 flex flex-col xs:flex-row items-center justify-between gap-2.5">
-                  {project.liveDemoUrl && (
-                    <a
-                      href={project.liveDemoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full xs:w-auto justify-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-xs font-bold hover:opacity-90 transition-opacity flex items-center space-x-1.5 shadow-md shadow-cyan-500/20"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Live Demo</span>
-                    </a>
-                  )}
-
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full xs:w-auto justify-center px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:text-white hover:border-white/30 text-xs font-semibold transition-colors flex items-center space-x-1.5"
-                    >
-                      <Github className="w-3.5 h-3.5" />
-                      <span>GitHub</span>
-                    </a>
-                  )}
+                {/* Links Footer - ONLY Repository (GitHub) Button */}
+                <div className="pt-4 border-t border-white/10">
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full justify-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 hover:from-cyan-500 hover:via-purple-600 hover:to-pink-500 text-cyan-300 hover:text-white border border-cyan-500/30 hover:border-transparent text-xs font-bold transition-all duration-300 flex items-center space-x-2 shadow-md hover:shadow-cyan-500/20 hover:scale-[1.02] active:scale-95"
+                  >
+                    <Github className="w-4 h-4" />
+                    <span>Repository</span>
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -300,30 +286,17 @@ export const Projects: React.FC = () => {
                 </div>
               </div>
 
-              {/* Fixed Footer Toolbar */}
-              <div className="p-5 border-t border-white/10 bg-[#07070d] flex items-center justify-end space-x-3 shrink-0">
-                {selectedProject.githubUrl && (
-                  <a
-                    href={selectedProject.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:text-white hover:border-white/30 text-xs font-bold transition-all flex items-center space-x-2"
-                  >
-                    <Github className="w-4 h-4" />
-                    <span>View Repository</span>
-                  </a>
-                )}
-                {selectedProject.liveDemoUrl && (
-                  <a
-                    href={selectedProject.liveDemoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 text-white text-xs font-extrabold flex items-center space-x-2 shadow-lg shadow-cyan-500/30 hover:shadow-purple-500/40 hover:scale-[1.02] transition-all"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    <span>Launch Live App</span>
-                  </a>
-                )}
+              {/* Fixed Footer Toolbar - ONLY Repository (GitHub) Button */}
+              <div className="p-5 border-t border-white/10 bg-[#07070d] flex items-center justify-end shrink-0">
+                <a
+                  href={selectedProject.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 text-white text-xs font-extrabold flex items-center space-x-2 shadow-lg shadow-cyan-500/30 hover:shadow-purple-500/40 hover:scale-[1.02] active:scale-95 transition-all"
+                >
+                  <Github className="w-4 h-4" />
+                  <span>Repository (GitHub)</span>
+                </a>
               </div>
             </motion.div>
           </div>
