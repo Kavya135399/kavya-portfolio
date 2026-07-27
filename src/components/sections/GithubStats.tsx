@@ -57,7 +57,7 @@ export const GithubStats: React.FC = () => {
           </div>
 
           {/* Contribution Heatmap Matrix */}
-          <div className="overflow-x-auto pb-4">
+          <div className="w-full max-w-full overflow-x-auto pb-4">
             <div className="grid grid-rows-7 grid-flow-col gap-1 min-w-[700px]">
               {contributionGrid.map((level, idx) => (
                 <div

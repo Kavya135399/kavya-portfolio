@@ -49,10 +49,10 @@ export const Projects: React.FC = () => {
   });
 
   return (
-    <section id="projects" className="relative py-12 sm:py-16 md:py-20 bg-[#050505] overflow-hidden font-sans scroll-mt-[80px]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="projects" className="relative py-12 sm:py-16 md:py-20 bg-[#050505] overflow-hidden font-sans scroll-mt-[80px] w-full max-w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full max-w-full">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-10">
+        <div className="text-center mb-8 sm:mb-10 w-full max-w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -67,16 +67,16 @@ export const Projects: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight uppercase"
+            className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight uppercase break-words"
           >
             Crafted <span className="gradient-text-neon">Projects</span>
           </motion.h2>
         </div>
 
         {/* Filter Bar & Search Input */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 sm:mb-10">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 sm:mb-10 w-full max-w-full">
           {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2 max-w-full">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -93,20 +93,20 @@ export const Projects: React.FC = () => {
           </div>
 
           {/* Search Box */}
-          <div className="relative w-full sm:w-64">
+          <div className="relative w-full sm:w-64 max-w-full">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
               placeholder="Search projects or tech..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-full bg-white/5 border border-white/10 text-slate-200 text-xs focus:outline-none focus:border-cyan-400/50 transition-colors"
+              className="w-full pl-10 pr-4 py-2 rounded-full bg-white/5 border border-white/10 text-slate-200 text-xs focus:outline-none focus:border-cyan-400/50 transition-colors box-border"
             />
           </div>
         </div>
 
         {/* Projects 3D Glass Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 w-full max-w-full">
           {filteredProjects.map((project, idx) => (
             <motion.div
               key={project.id}
@@ -115,7 +115,7 @@ export const Projects: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               whileHover={{ y: -6 }}
-              className="glass-card rounded-3xl overflow-hidden border border-white/10 group flex flex-col justify-between h-full shadow-xl hover:border-cyan-500/40 transition-all duration-300"
+              className="glass-card rounded-3xl overflow-hidden border border-white/10 group flex flex-col justify-between h-full shadow-xl hover:border-cyan-500/40 transition-all duration-300 w-full max-w-full box-border"
             >
               {/* Responsive 16:9 Image Preview Container */}
               <div className="relative w-full aspect-[16/9] overflow-hidden bg-[#07070e] border-b border-white/10 shrink-0">
@@ -123,7 +123,7 @@ export const Projects: React.FC = () => {
                   src={project.image}
                   alt={project.title}
                   loading="lazy"
-                  className="w-full h-full object-cover object-top sm:group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover object-top sm:group-hover:scale-105 transition-transform duration-500 max-w-full"
                 />
 
                 {/* Category Badge */}
@@ -142,22 +142,22 @@ export const Projects: React.FC = () => {
               </div>
 
               {/* Content Body */}
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="text-xl font-extrabold text-white mb-1 group-hover:text-cyan-300 transition-colors">
+              <div className="p-4 sm:p-6 flex-1 flex flex-col justify-between w-full max-w-full overflow-hidden box-border">
+                <div className="w-full max-w-full">
+                  <h3 className="text-lg sm:text-xl font-extrabold text-white mb-1 group-hover:text-cyan-300 transition-colors break-words max-w-full">
                     {project.title}
                   </h3>
-                  <p className="text-xs font-mono text-purple-400 mb-3">{project.subtitle}</p>
-                  <p className="text-slate-300 text-xs leading-relaxed mb-6 line-clamp-3">
+                  <p className="text-xs font-mono text-purple-400 mb-3 break-words max-w-full">{project.subtitle}</p>
+                  <p className="text-slate-300 text-xs leading-relaxed mb-6 line-clamp-3 break-words max-w-full">
                     {project.description}
                   </p>
 
                   {/* Tech Badges */}
-                  <div className="flex flex-wrap gap-1.5 mb-6">
+                  <div className="flex flex-wrap gap-1.5 mb-6 max-w-full overflow-hidden">
                     {project.techBadges.map((badge, bIdx) => (
                       <span
                         key={bIdx}
-                        className="px-2.5 py-1 rounded-lg bg-white/5 text-slate-300 text-[11px] font-mono border border-white/10"
+                        className="px-2.5 py-1 rounded-lg bg-white/5 text-slate-300 text-[11px] font-mono border border-white/10 break-words max-w-full"
                       >
                         {badge}
                       </span>
@@ -166,12 +166,12 @@ export const Projects: React.FC = () => {
                 </div>
 
                 {/* Links Footer - ONLY Repository (GitHub) Button */}
-                <div className="pt-4 border-t border-white/10">
+                <div className="pt-4 border-t border-white/10 w-full max-w-full">
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full justify-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 hover:from-cyan-500 hover:via-purple-600 hover:to-pink-500 text-cyan-300 hover:text-white border border-cyan-500/30 hover:border-transparent text-xs font-bold transition-all duration-300 flex items-center space-x-2 shadow-md hover:shadow-cyan-500/20 hover:scale-[1.02] active:scale-95"
+                    className="w-full justify-center min-h-[48px] px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 hover:from-cyan-500 hover:via-purple-600 hover:to-pink-500 text-cyan-300 hover:text-white border border-cyan-500/30 hover:border-transparent text-xs font-bold transition-all duration-300 flex items-center space-x-2 shadow-md hover:shadow-cyan-500/20 hover:scale-[1.02] active:scale-95 max-w-full box-border"
                   >
                     <Github className="w-4 h-4" />
                     <span>Repository</span>
@@ -191,7 +191,7 @@ export const Projects: React.FC = () => {
               data-lenis-prevent
               data-lenis-prevent-wheel
               data-lenis-prevent-touch
-              className="fixed inset-0 z-[999999] flex items-center justify-center p-3 sm:p-6 bg-black/92 backdrop-blur-2xl overflow-y-auto font-sans"
+              className="fixed inset-0 z-[999999] flex items-center justify-center p-3 sm:p-6 bg-black/92 backdrop-blur-2xl overflow-y-auto font-sans max-w-full w-full"
               onClick={() => setSelectedProject(null)}
             >
               <motion.div
@@ -199,7 +199,7 @@ export const Projects: React.FC = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative w-[95vw] sm:w-full max-w-3xl max-h-[90vh] bg-[#0c0c14] border border-white/15 rounded-[20px] sm:rounded-3xl overflow-hidden overflow-x-hidden shadow-[0_25px_60px_rgba(0,0,0,0.95)] flex flex-col my-auto mt-14 sm:mt-auto font-sans"
+                className="relative w-full max-w-[calc(100vw-24px)] sm:max-w-3xl max-h-[88vh] bg-[#0c0c14] border border-white/15 rounded-[20px] sm:rounded-3xl overflow-hidden overflow-x-hidden shadow-[0_25px_60px_rgba(0,0,0,0.95)] flex flex-col my-auto mt-14 sm:mt-auto font-sans box-border mx-auto"
               >
                 {/* Sticky Header Bar: Clean Header with Title & Fixed 48x48px Close (✕) Button */}
                 <div className="sticky top-0 z-50 p-4 sm:p-6 border-b border-white/10 bg-[#07070d]/95 backdrop-blur-xl flex items-center justify-between shrink-0">
