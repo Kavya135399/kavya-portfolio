@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Download, Printer, ExternalLink, Award, BookOpen, Code, Mail, Phone, MapPin, Globe, Github, Linkedin, Briefcase, GraduationCap, Languages, CheckCircle, FileText, Loader2 } from 'lucide-react';
@@ -11,6 +11,20 @@ interface ResumeModalProps {
 
 export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
   const [isDownloading, setIsDownloading] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+      document.documentElement.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.documentElement.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const handlePrint = () => {
     window.print();

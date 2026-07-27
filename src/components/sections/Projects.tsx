@@ -16,11 +16,14 @@ export const Projects: React.FC = () => {
   useEffect(() => {
     if (selectedProject) {
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
+      document.documentElement.style.overflow = 'unset';
     }
     return () => {
       document.body.style.overflow = 'unset';
+      document.documentElement.style.overflow = 'unset';
     };
   }, [selectedProject]);
 
@@ -196,17 +199,17 @@ export const Projects: React.FC = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-3xl max-h-[85vh] sm:max-h-[90vh] bg-[#0c0c14] border border-white/15 rounded-3xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.95)] flex flex-col my-auto mt-16 sm:mt-auto"
+                className="relative w-[95vw] sm:w-full max-w-3xl max-h-[90vh] bg-[#0c0c14] border border-white/15 rounded-[20px] sm:rounded-3xl overflow-hidden overflow-x-hidden shadow-[0_25px_60px_rgba(0,0,0,0.95)] flex flex-col my-auto mt-14 sm:mt-auto font-sans"
               >
-                {/* Sticky Header Bar: Clean Header with Title & Fixed Close (✕) Button */}
-                <div className="sticky top-0 z-50 p-4 sm:p-6 border-b border-white/10 bg-[#07070d]/95 backdrop-blur-xl flex items-start justify-between shrink-0">
+                {/* Sticky Header Bar: Clean Header with Title & Fixed 48x48px Close (✕) Button */}
+                <div className="sticky top-0 z-50 p-4 sm:p-6 border-b border-white/10 bg-[#07070d]/95 backdrop-blur-xl flex items-center justify-between shrink-0">
                   <div className="space-y-1 pr-2">
                     <div className="flex items-center space-x-2">
                       <span className="px-3 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-[11px] font-mono font-bold">
                         {selectedProject.category}
                       </span>
                     </div>
-                    <h2 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight pt-1">
+                    <h2 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight pt-0.5">
                       {selectedProject.title}
                     </h2>
                     <p className="text-xs text-purple-400 font-mono font-semibold">
@@ -214,10 +217,11 @@ export const Projects: React.FC = () => {
                     </p>
                   </div>
 
+                  {/* Touch-Friendly 48px x 48px Close Button */}
                   <button
                     onClick={() => setSelectedProject(null)}
                     aria-label="Close Project Inspection Modal"
-                    className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white/15 hover:bg-rose-500/30 text-white border border-white/20 backdrop-blur-md transition-all flex items-center justify-center shrink-0 active:scale-95 shadow-xl ml-2"
+                    className="w-12 h-12 rounded-2xl bg-white/15 hover:bg-rose-500/40 text-white border border-white/30 backdrop-blur-md transition-all flex items-center justify-center shrink-0 hover:scale-105 active:scale-95 shadow-xl ml-2 focus:ring-2 focus:ring-rose-400 focus:outline-none"
                     title="Close Modal"
                   >
                     <X className="w-6 h-6 text-white" />
