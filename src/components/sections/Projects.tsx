@@ -186,7 +186,7 @@ export const Projects: React.FC = () => {
             data-lenis-prevent
             data-lenis-prevent-wheel
             data-lenis-prevent-touch
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-xl overflow-y-auto"
+            className="fixed inset-0 z-[99999] flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-xl overflow-y-auto font-sans"
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
@@ -194,17 +194,17 @@ export const Projects: React.FC = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-3xl max-h-[88vh] bg-[#0c0c14] border border-white/15 rounded-[28px] overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9)] flex flex-col my-auto"
+              className="relative w-full max-w-3xl max-h-[90vh] bg-[#0c0c14] border border-white/15 rounded-3xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9)] flex flex-col my-auto"
             >
-              {/* Header Bar: Clean Header with Title & Close Button */}
-              <div className="p-6 border-b border-white/10 bg-[#07070d] flex items-start justify-between shrink-0">
-                <div className="space-y-1">
+              {/* Sticky Header Bar: Clean Header with Title & Fixed Close (✕) Button */}
+              <div className="sticky top-0 z-50 p-4 sm:p-6 border-b border-white/10 bg-[#07070d]/95 backdrop-blur-xl flex items-start justify-between shrink-0">
+                <div className="space-y-1 pr-2">
                   <div className="flex items-center space-x-2">
                     <span className="px-3 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-[11px] font-mono font-bold">
                       {selectedProject.category}
                     </span>
                   </div>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight pt-1">
+                  <h2 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight pt-1">
                     {selectedProject.title}
                   </h2>
                   <p className="text-xs text-purple-400 font-mono font-semibold">
@@ -214,10 +214,11 @@ export const Projects: React.FC = () => {
 
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="p-2.5 rounded-2xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 transition-all hover:scale-105 shrink-0"
+                  aria-label="Close Project Inspection Modal"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white/10 hover:bg-rose-500/30 text-white border border-white/20 backdrop-blur-md transition-all flex items-center justify-center shrink-0 active:scale-95 shadow-xl ml-2"
                   title="Close Modal"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-6 h-6 text-white" />
                 </button>
               </div>
 
@@ -227,10 +228,10 @@ export const Projects: React.FC = () => {
                 data-lenis-prevent-wheel
                 data-lenis-prevent-touch
                 onWheel={(e) => e.stopPropagation()}
-                className="p-6 sm:p-8 overflow-y-auto space-y-6 flex-1 max-h-[calc(88vh-180px)] overscroll-contain text-slate-200"
+                className="p-4 sm:p-6 md:p-8 overflow-y-auto space-y-6 flex-1 max-h-[calc(90vh-140px)] overscroll-contain text-slate-200"
               >
                 {/* Project Image Frame Showcase */}
-                <div className="relative w-full h-56 sm:h-72 rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-inner">
+                <div className="relative w-full aspect-[16/9] sm:h-72 rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-inner">
                   <img
                     src={selectedProject.image}
                     alt={selectedProject.title}

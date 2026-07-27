@@ -52,7 +52,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           data-lenis-prevent
           data-lenis-prevent-wheel
           data-lenis-prevent-touch
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-xl font-sans"
+          className="fixed inset-0 z-[99999] flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/90 backdrop-blur-xl font-sans"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
