@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Search, Sparkles, CheckCircle2, X, Eye, Layers } from 'lucide-react';
 import { PROJECTS } from '../../data/portfolioData';
@@ -179,130 +180,133 @@ export const Projects: React.FC = () => {
         </div>
       </div>
 
-      {/* Modern High-End Project Inspection Modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <div
-            data-lenis-prevent
-            data-lenis-prevent-wheel
-            data-lenis-prevent-touch
-            className="fixed inset-0 z-[99999] flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-xl overflow-y-auto font-sans"
-            onClick={() => setSelectedProject(null)}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-3xl max-h-[90vh] bg-[#0c0c14] border border-white/15 rounded-3xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9)] flex flex-col my-auto"
+      {/* Modern High-End Project Inspection Modal via React Portal */}
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {selectedProject && (
+            <div
+              data-lenis-prevent
+              data-lenis-prevent-wheel
+              data-lenis-prevent-touch
+              className="fixed inset-0 z-[999999] flex items-center justify-center p-3 sm:p-6 bg-black/92 backdrop-blur-2xl overflow-y-auto font-sans"
+              onClick={() => setSelectedProject(null)}
             >
-              {/* Sticky Header Bar: Clean Header with Title & Fixed Close (✕) Button */}
-              <div className="sticky top-0 z-50 p-4 sm:p-6 border-b border-white/10 bg-[#07070d]/95 backdrop-blur-xl flex items-start justify-between shrink-0">
-                <div className="space-y-1 pr-2">
-                  <div className="flex items-center space-x-2">
-                    <span className="px-3 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-[11px] font-mono font-bold">
-                      {selectedProject.category}
-                    </span>
-                  </div>
-                  <h2 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight pt-1">
-                    {selectedProject.title}
-                  </h2>
-                  <p className="text-xs text-purple-400 font-mono font-semibold">
-                    {selectedProject.subtitle}
-                  </p>
-                </div>
-
-                <button
-                  onClick={() => setSelectedProject(null)}
-                  aria-label="Close Project Inspection Modal"
-                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white/10 hover:bg-rose-500/30 text-white border border-white/20 backdrop-blur-md transition-all flex items-center justify-center shrink-0 active:scale-95 shadow-xl ml-2"
-                  title="Close Modal"
-                >
-                  <X className="w-6 h-6 text-white" />
-                </button>
-              </div>
-
-              {/* Scrollable Modal Content */}
-              <div
-                data-lenis-prevent
-                data-lenis-prevent-wheel
-                data-lenis-prevent-touch
-                onWheel={(e) => e.stopPropagation()}
-                className="p-4 sm:p-6 md:p-8 overflow-y-auto space-y-6 flex-1 max-h-[calc(90vh-140px)] overscroll-contain text-slate-200"
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-3xl max-h-[85vh] sm:max-h-[90vh] bg-[#0c0c14] border border-white/15 rounded-3xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.95)] flex flex-col my-auto mt-16 sm:mt-auto"
               >
-                {/* Project Image Frame Showcase */}
-                <div className="relative w-full aspect-[16/9] sm:h-72 rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-inner">
-                  <img
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    className="w-full h-full object-cover object-top filter brightness-100 contrast-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c14]/60 via-transparent to-transparent pointer-events-none"></div>
-                </div>
-
-                {/* Overview Section */}
-                <div className="space-y-2">
-                  <h4 className="text-xs font-mono uppercase text-cyan-400 tracking-widest font-bold flex items-center space-x-2">
-                    <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-                    <span>PROJECT OVERVIEW & ARCHITECTURE</span>
-                  </h4>
-                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-sans">
-                    {selectedProject.longDescription || selectedProject.description}
-                  </p>
-                </div>
-
-                {/* Key Features Grid */}
-                <div className="space-y-3">
-                  <h4 className="text-xs font-mono uppercase text-purple-400 tracking-widest font-bold">
-                    KEY FEATURES & FUNCTIONALITIES
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {selectedProject.features.map((feat, fIdx) => (
-                      <div
-                        key={fIdx}
-                        className="flex items-start space-x-2.5 p-3.5 rounded-2xl bg-white/5 border border-white/5 text-xs text-slate-200 hover:border-purple-500/30 transition-colors"
-                      >
-                        <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                        <span className="leading-snug">{feat}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Tech Badges */}
-                <div className="space-y-2">
-                  <h4 className="text-xs font-mono uppercase text-slate-400 tracking-widest font-bold">
-                    TECHS & TOOLS USED
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.techBadges.map((badge, bIdx) => (
-                      <span
-                        key={bIdx}
-                        className="px-3.5 py-1.5 rounded-xl bg-purple-500/15 text-purple-300 text-xs font-mono border border-purple-500/30"
-                      >
-                        {badge}
+                {/* Sticky Header Bar: Clean Header with Title & Fixed Close (✕) Button */}
+                <div className="sticky top-0 z-50 p-4 sm:p-6 border-b border-white/10 bg-[#07070d]/95 backdrop-blur-xl flex items-start justify-between shrink-0">
+                  <div className="space-y-1 pr-2">
+                    <div className="flex items-center space-x-2">
+                      <span className="px-3 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-[11px] font-mono font-bold">
+                        {selectedProject.category}
                       </span>
-                    ))}
+                    </div>
+                    <h2 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight pt-1">
+                      {selectedProject.title}
+                    </h2>
+                    <p className="text-xs text-purple-400 font-mono font-semibold">
+                      {selectedProject.subtitle}
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() => setSelectedProject(null)}
+                    aria-label="Close Project Inspection Modal"
+                    className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white/15 hover:bg-rose-500/30 text-white border border-white/20 backdrop-blur-md transition-all flex items-center justify-center shrink-0 active:scale-95 shadow-xl ml-2"
+                    title="Close Modal"
+                  >
+                    <X className="w-6 h-6 text-white" />
+                  </button>
+                </div>
+
+                {/* Scrollable Modal Content */}
+                <div
+                  data-lenis-prevent
+                  data-lenis-prevent-wheel
+                  data-lenis-prevent-touch
+                  onWheel={(e) => e.stopPropagation()}
+                  className="p-4 sm:p-6 md:p-8 overflow-y-auto space-y-6 flex-1 max-h-[calc(85vh-140px)] overscroll-contain text-slate-200"
+                >
+                  {/* Project Image Frame Showcase */}
+                  <div className="relative w-full aspect-[16/9] sm:h-72 rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-inner">
+                    <img
+                      src={selectedProject.image}
+                      alt={selectedProject.title}
+                      className="w-full h-full object-cover object-top filter brightness-100 contrast-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c14]/60 via-transparent to-transparent pointer-events-none"></div>
+                  </div>
+
+                  {/* Overview Section */}
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-mono uppercase text-cyan-400 tracking-widest font-bold flex items-center space-x-2">
+                      <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                      <span>PROJECT OVERVIEW & ARCHITECTURE</span>
+                    </h4>
+                    <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-sans">
+                      {selectedProject.longDescription || selectedProject.description}
+                    </p>
+                  </div>
+
+                  {/* Key Features Grid */}
+                  <div className="space-y-3">
+                    <h4 className="text-xs font-mono uppercase text-purple-400 tracking-widest font-bold">
+                      KEY FEATURES & FUNCTIONALITIES
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {selectedProject.features.map((feat, fIdx) => (
+                        <div
+                          key={fIdx}
+                          className="flex items-start space-x-2.5 p-3.5 rounded-2xl bg-white/5 border border-white/5 text-xs text-slate-200 hover:border-purple-500/30 transition-colors"
+                        >
+                          <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                          <span className="leading-snug">{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Tech Badges */}
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-mono uppercase text-slate-400 tracking-widest font-bold">
+                      TECHS & TOOLS USED
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.techBadges.map((badge, bIdx) => (
+                        <span
+                          key={bIdx}
+                          className="px-3.5 py-1.5 rounded-xl bg-purple-500/15 text-purple-300 text-xs font-mono border border-purple-500/30"
+                        >
+                          {badge}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Fixed Footer Toolbar - ONLY Repository (GitHub) Button */}
-              <div className="p-5 border-t border-white/10 bg-[#07070d] flex items-center justify-end shrink-0">
-                <a
-                  href={selectedProject.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 text-white text-xs font-extrabold flex items-center space-x-2 shadow-lg shadow-cyan-500/30 hover:shadow-purple-500/40 hover:scale-[1.02] active:scale-95 transition-all"
-                >
-                  <Github className="w-4 h-4" />
-                  <span>Repository (GitHub)</span>
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+                {/* Fixed Footer Toolbar - ONLY Repository (GitHub) Button */}
+                <div className="p-5 border-t border-white/10 bg-[#07070d] flex items-center justify-end shrink-0">
+                  <a
+                    href={selectedProject.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto justify-center px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 text-white text-xs font-extrabold flex items-center space-x-2 shadow-lg shadow-cyan-500/30 hover:shadow-purple-500/40 hover:scale-[1.02] active:scale-95 transition-all"
+                  >
+                    <Github className="w-4 h-4" />
+                    <span>Repository (GitHub)</span>
+                  </a>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </section>
   );
 };

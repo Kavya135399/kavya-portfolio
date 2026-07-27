@@ -70,7 +70,7 @@ export function App() {
           <Navbar onOpenResume={() => setResumeOpen(true)} />
 
           {/* Main Content Sections */}
-          <main className="relative z-10 space-y-0">
+          <main className="relative space-y-0">
             <Hero onOpenResume={() => setResumeOpen(true)} />
             <About onOpenResume={() => setResumeOpen(true)} />
             <Skills />

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Download, Printer, ExternalLink, Award, BookOpen, Code, Mail, Phone, MapPin, Globe, Github, Linkedin, Briefcase, GraduationCap, Languages, CheckCircle, FileText, Loader2 } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/portfolioData';
@@ -45,20 +46,20 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
     window.open('/resume/Kavya_Dave_Resume.pdf', '_blank', 'noopener,noreferrer');
   };
 
-  return (
+  return typeof document !== 'undefined' ? createPortal(
     <AnimatePresence>
       {isOpen && (
         <div
           data-lenis-prevent
           data-lenis-prevent-wheel
           data-lenis-prevent-touch
-          className="fixed inset-0 z-[99999] flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/90 backdrop-blur-xl font-sans"
+          className="fixed inset-0 z-[999999] flex items-center justify-center p-3 sm:p-6 bg-black/92 backdrop-blur-2xl overflow-y-auto font-sans"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-4xl max-h-[92vh] bg-[#0c0c14] border border-white/15 rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col my-auto"
+            className="relative w-full max-w-4xl max-h-[85vh] sm:max-h-[92vh] bg-[#0c0c14] border border-white/15 rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.95)] flex flex-col my-auto mt-16 sm:mt-auto"
           >
             {/* Sticky Header Toolbar with SINGLE Fixed Close (✕) Button */}
             <div className="sticky top-0 z-50 flex items-center justify-between px-4 sm:px-6 py-3.5 border-b border-white/10 bg-[#07070d]/95 backdrop-blur-xl shrink-0">
@@ -369,6 +370,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
-  );
+    </AnimatePresence>,
+    document.body
+  ) : null;
 };
